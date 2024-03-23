@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    id("co.touchlab.skie") version "0.6.2" //This plugin used for intercommunication of android flow to ios (combine publishing)
+    //https://github.com/touchlab/SKIE
 }
 
 kotlin {
