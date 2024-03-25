@@ -7,8 +7,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Divider
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -22,18 +28,24 @@ import com.mujapps.multiplatformtester.PhoneDetails
 
 @Preview
 @Composable
-fun DetailsScreen() {
+fun DetailsScreen(
+    onBackButtonClick: () -> Unit
+) {
     Column(modifier = Modifier.fillMaxSize(), verticalArrangement = Arrangement.Top, horizontalAlignment = Alignment.CenterHorizontally) {
-        TopToolBar()
+        TopToolBar(onBackButtonClick)
         DetailsContainer()
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopToolBar() {
+fun TopToolBar(onBackButtonClick: () -> Unit) {
     TopAppBar(title = {
         Text(text = "About Android Device")
+    }, navigationIcon = {
+        IconButton(onClick = onBackButtonClick) {
+            Icon(imageVector = Icons.AutoMirrored.Outlined.ArrowBack, contentDescription = "About Screen Back Click")
+        }
     })
 }
 
@@ -56,7 +68,7 @@ fun RowView(title: String, subTitle: String) {
             Text(text = subTitle, style = MaterialTheme.typography.bodySmall, color = Color.Yellow)
         }
     }
-    Divider()
+    HorizontalDivider()
 }
 
 private fun makeItems(): ArrayList<Pair<String, String>> {
