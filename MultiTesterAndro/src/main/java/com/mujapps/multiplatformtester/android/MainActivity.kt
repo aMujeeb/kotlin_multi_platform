@@ -29,7 +29,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //DetailsScreen()
-                    ArticleScreen(articlesVideModel = mArticleViewModel)
+                    //ArticleScreen(articlesVideModel = mArticleViewModel)
+                    AppScaffold(articleViewModel = mArticleViewModel)
                 }
             }
         }
@@ -37,10 +38,10 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Preview
+/*@Preview
 @Composable
 fun DefaultPreview() {
     MyApplicationTheme {
         DetailsScreen()
     }
-}
+}*/
