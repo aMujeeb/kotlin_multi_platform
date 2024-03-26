@@ -12,38 +12,17 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
-class ArticleViewModel : BaseViewModel() {
+class ArticleViewModel(private val articlesUseCase: ArticlesUseCase) : BaseViewModel() {
     // State flows are obligated to have a initial value
     private val _articleState: MutableStateFlow<ArticleState> = MutableStateFlow(ArticleState(loading = true))
     val mArticleState: StateFlow<ArticleState> get() = _articleState
 
-    private val articlesUseCase : ArticlesUseCase
-
     init {
-        val mHttpClient = HttpClient {
-            install(ContentNegotiation) {
-                json(Json {
-                    prettyPrint = true
-                    isLenient = true
-                    ignoreUnknownKeys = true
-                }                                                                                                                                                                                                    )
-            }
-        }
-
-        val articleService = ArticlesService(mHttpClient)
-        articlesUseCase = ArticlesUseCase(articleService)
-
         getArticles()
     }
 
     private fun getArticles() {
         mScope.launch {
-            /*delay(1500)
-            _articleState.emit(ArticleState(error = "Something Went Wrong"))
-            val fetched = fetchArticles()
-            delay(1000) //Test delay for imitate network delay
-            _articleState.emit(ArticleState(articles = fetched))*/
-
             val fetchedArticles = articlesUseCase.getArticles()
             _articleState.emit(ArticleState(articles = fetchedArticles))
         }

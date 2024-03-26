@@ -21,7 +21,6 @@ class MainActivity : ComponentActivity() {
 
         PhoneDetails().logInformation()
 
-        val mArticleViewModel: ArticleViewModel by viewModels()
         setContent {
             MyApplicationTheme {
                 Surface(
@@ -30,7 +29,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     //DetailsScreen()
                     //ArticleScreen(articlesVideModel = mArticleViewModel)
-                    AppScaffold(articleViewModel = mArticleViewModel)
+                    AppScaffold()
                 }
             }
         }

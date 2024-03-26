@@ -16,7 +16,7 @@ import com.mujapps.multiplatformtester.android.screens.Screens
 import com.mujapps.multiplatformtester.articles.ArticleViewModel
 
 @Composable
-fun AppScaffold(articleViewModel: ArticleViewModel) {
+fun AppScaffold() {
 
     val navController = rememberNavController()
 
@@ -25,17 +25,16 @@ fun AppScaffold(articleViewModel: ArticleViewModel) {
             navController = navController,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(it),
-            articleViewModel = articleViewModel
+                .padding(it)
         )
     }
 }
 
 @Composable
-fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier, articleViewModel: ArticleViewModel) {
+fun AppNavHost(navController: NavHostController, modifier: Modifier = Modifier) {
     NavHost(navController = navController, startDestination = Screens.ARTICLES.route, modifier = modifier) {
         composable(Screens.ARTICLES.route) {
-            ArticleScreen(onAboutButtonClick = { navController.navigate(Screens.ABOUT_DEVICE.route) }, articlesVideModel = articleViewModel)
+            ArticleScreen(onAboutButtonClick = { navController.navigate(Screens.ABOUT_DEVICE.route) })
         }
         composable(Screens.ABOUT_DEVICE.route) {
             DetailsScreen(onBackButtonClick = {

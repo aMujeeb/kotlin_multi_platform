@@ -15,7 +15,7 @@ extension ArticlesScreen {
         let articleViewModel : ArticleViewModel
         
         init() {
-            articleViewModel = ArticleViewModel()
+            articleViewModel = ArticlesInjector().articleVideModel
             articleState = articleViewModel.mArticleState.value
         }
         
