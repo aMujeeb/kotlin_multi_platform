@@ -1,8 +1,8 @@
-package com.mujapps.multiplatformtester.usecases
+package com.mujapps.multiplatformtester.articles.domain.usecases
 
-import com.mujapps.multiplatformtester.articles.Article
-import com.mujapps.multiplatformtester.articles.ArticleRaw
-import com.mujapps.multiplatformtester.services.ArticlesService
+import com.mujapps.multiplatformtester.articles.domain.Article
+import com.mujapps.multiplatformtester.articles.data.ArticleRaw
+import com.mujapps.multiplatformtester.articles.data.repository.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
@@ -11,9 +11,9 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase(private val artService: ArticlesService) {
-    suspend fun getArticles(): List<Article> {
-        val articleRaw = artService.fetchArticles()
+class ArticlesUseCase(private val artRepo: ArticlesRepository) {
+    suspend fun getArticles(forceToRefresh : Boolean): List<Article> {
+        val articleRaw = artRepo.getArticles(forceToRefresh)
         return mapArticles(articleRaw)
     }
 

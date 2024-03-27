@@ -30,33 +30,40 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.mujapps.multiplatformtester.articles.Article
-import com.mujapps.multiplatformtester.articles.ArticleViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
+import com.mujapps.multiplatformtester.articles.domain.Article
+import com.mujapps.multiplatformtester.articles.precentation.ArticleViewModel
+import org.koin.androidx.compose.getViewModel
 
 
 @Composable
-fun ArticleScreen(onAboutButtonClick: () -> Unit, articlesVideModel: ArticleViewModel) {
+fun ArticleScreen(onAboutButtonClick: () -> Unit, articlesVideModel: ArticleViewModel = getViewModel()) {
 
     val mArticleState = articlesVideModel.mArticleState.collectAsState()
 
     Column {
         AppBar(onAboutButtonClick)
-        if (mArticleState.value.loading) {
+        //Can use SwipeRefresh indicator progress
+       /* if (mArticleState.value.loading) {
             ProgressLoader()
-        }
+        }*/
         if (mArticleState.value.error.isNullOrEmpty().not()) {
             DisplayErrorMessage(mArticleState.value.error ?: "")
         }
         if (mArticleState.value.articles.isNotEmpty())
-            ArticlesListView(articlesVideModel.mArticleState.value.articles)
+            ArticlesListView(articlesVideModel)
     }
 }
 
 @Composable
-fun ArticlesListView(articles: List<Article>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(articles) { article ->
-            ArticleItemView(articleItem = article)
+fun ArticlesListView(viewModel: ArticleViewModel) {
+
+    SwipeRefresh(state = SwipeRefreshState(viewModel.mArticleState.value.loading), onRefresh = { viewModel.getArticles(true) }) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(viewModel.mArticleState.value.articles) { article ->
+                ArticleItemView(articleItem = article)
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.mujapps.multiplatformtester.articles
+package com.mujapps.multiplatformtester.articles.domain
 
 data class Article(
     val title: String,
