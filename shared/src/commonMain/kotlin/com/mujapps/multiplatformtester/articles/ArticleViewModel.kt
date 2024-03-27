@@ -21,9 +21,12 @@ class ArticleViewModel(private val articlesUseCase: ArticlesUseCase) : BaseViewM
         getArticles()
     }
 
-    private fun getArticles() {
+    fun getArticles(forceToRefresh: Boolean = false) {
         mScope.launch {
-            val fetchedArticles = articlesUseCase.getArticles()
+            _articleState.emit(ArticleState(loading = true, articles = _articleState.value.articles))
+
+            delay(1500)
+            val fetchedArticles = articlesUseCase.getArticles(forceToRefresh)
             _articleState.emit(ArticleState(articles = fetchedArticles))
         }
     }

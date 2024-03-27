@@ -40,9 +40,9 @@ struct ArticlesScreen: View {
         VStack {
             AppBar()
             
-            if viewModel.articleState.loading {
-                Loader()
-            }
+            //if viewModel.articleState.loading {
+                //Loader()
+            //}
             
             if let error = viewModel.articleState.error {
                 ErrorMessage(message: error)
@@ -94,11 +94,12 @@ struct ArticleItemView : View {
     }
 }
 
-struct Loader : View {
+//No need a progress indicator since pull to refresh view
+/*struct Loader : View {
     var body: some View {
         ProgressView()
     }
-}
+} */
 
 struct ErrorMessage : View {
     var message : String
