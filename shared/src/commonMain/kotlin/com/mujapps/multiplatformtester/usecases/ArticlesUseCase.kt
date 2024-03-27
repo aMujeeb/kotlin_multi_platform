@@ -2,6 +2,7 @@ package com.mujapps.multiplatformtester.usecases
 
 import com.mujapps.multiplatformtester.articles.Article
 import com.mujapps.multiplatformtester.articles.ArticleRaw
+import com.mujapps.multiplatformtester.articles.repository.ArticlesRepository
 import com.mujapps.multiplatformtester.services.ArticlesService
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
@@ -11,9 +12,9 @@ import kotlinx.datetime.toLocalDateTime
 import kotlinx.datetime.todayIn
 import kotlin.math.abs
 
-class ArticlesUseCase(private val artService: ArticlesService) {
+class ArticlesUseCase(private val artRepo: ArticlesRepository) {
     suspend fun getArticles(): List<Article> {
-        val articleRaw = artService.fetchArticles()
+        val articleRaw = artRepo.getArticles()
         return mapArticles(articleRaw)
     }
 

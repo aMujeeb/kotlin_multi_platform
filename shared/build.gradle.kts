@@ -3,7 +3,8 @@ plugins {
     alias(libs.plugins.androidLibrary)
     id("co.touchlab.skie") version "0.6.2" //This plugin used for intercommunication of android flow to ios (combine publishing)
     //https://github.com/touchlab/SKIE
-    kotlin("plugin.serialization") version "1.9.20"
+    kotlin("plugin.serialization") version "1.9.21"
+    alias(libs.plugins.sqlDelight)
 }
 
 kotlin {
@@ -22,7 +23,7 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "shared"
-            isStatic = true
+            isStatic = false
         }
     }
 
@@ -34,17 +35,20 @@ kotlin {
             implementation(libs.ktor.serialization.kotlinx.json)
             implementation(libs.kotlinx.datetime)
             implementation(libs.koin.core)
+            implementation(libs.sql.coroutines.extensions)
         }
 
         //Android specific dependencies in Shared
         androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
             implementation(libs.ktor.client.android)
+            implementation(libs.sql.android.driver)
         }
 
         //iOs specific dependencies in Main
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
+            implementation(libs.sql.native.driver)
         }
 
         commonTest.dependencies {
@@ -62,5 +66,14 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
+    }
+}
+
+//Defining the Database at gradle
+sqldelight {
+    databases {
+        create(name = "MultiDb") {
+            packageName.set("mujapps.multiplatformtester.db") //Path where Db related files were looked into on Schema creation
+        }
     }
 }
