@@ -1,9 +1,8 @@
-package com.mujapps.multiplatformtester.usecases
+package com.mujapps.multiplatformtester.articles.domain.usecases
 
-import com.mujapps.multiplatformtester.articles.Article
-import com.mujapps.multiplatformtester.articles.ArticleRaw
-import com.mujapps.multiplatformtester.articles.repository.ArticlesRepository
-import com.mujapps.multiplatformtester.services.ArticlesService
+import com.mujapps.multiplatformtester.articles.domain.Article
+import com.mujapps.multiplatformtester.articles.data.ArticleRaw
+import com.mujapps.multiplatformtester.articles.data.repository.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

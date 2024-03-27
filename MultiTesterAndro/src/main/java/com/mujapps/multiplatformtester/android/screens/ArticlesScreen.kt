@@ -32,8 +32,8 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshState
-import com.mujapps.multiplatformtester.articles.Article
-import com.mujapps.multiplatformtester.articles.ArticleViewModel
+import com.mujapps.multiplatformtester.articles.domain.Article
+import com.mujapps.multiplatformtester.articles.precentation.ArticleViewModel
 import org.koin.androidx.compose.getViewModel
 
 

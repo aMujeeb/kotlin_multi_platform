@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,7 +12,6 @@ import androidx.navigation.compose.rememberNavController
 import com.mujapps.multiplatformtester.android.screens.ArticleScreen
 import com.mujapps.multiplatformtester.android.screens.DetailsScreen
 import com.mujapps.multiplatformtester.android.screens.Screens
-import com.mujapps.multiplatformtester.articles.ArticleViewModel
 
 @Composable
 fun AppScaffold() {

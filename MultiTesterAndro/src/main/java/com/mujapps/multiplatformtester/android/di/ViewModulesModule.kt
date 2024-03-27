@@ -1,6 +1,6 @@
 package com.mujapps.multiplatformtester.android.di
 
-import com.mujapps.multiplatformtester.articles.ArticleViewModel
+import com.mujapps.multiplatformtester.articles.precentation.ArticleViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

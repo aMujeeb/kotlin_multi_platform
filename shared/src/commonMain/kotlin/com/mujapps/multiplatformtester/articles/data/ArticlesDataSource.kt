@@ -1,6 +1,5 @@
-package com.mujapps.multiplatformtester.articles.datasource
+package com.mujapps.multiplatformtester.articles.data
 
-import com.mujapps.multiplatformtester.articles.ArticleRaw
 import mujapps.multiplatformtester.db.MultiDb
 
 class ArticlesDataSource(private val database: MultiDb) {

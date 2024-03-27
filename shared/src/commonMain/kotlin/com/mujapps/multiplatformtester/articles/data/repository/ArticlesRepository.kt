@@ -1,8 +1,8 @@
-package com.mujapps.multiplatformtester.articles.repository
+package com.mujapps.multiplatformtester.articles.data.repository
 
-import com.mujapps.multiplatformtester.articles.ArticleRaw
-import com.mujapps.multiplatformtester.articles.datasource.ArticlesDataSource
-import com.mujapps.multiplatformtester.services.ArticlesService
+import com.mujapps.multiplatformtester.articles.data.ArticleRaw
+import com.mujapps.multiplatformtester.articles.data.ArticlesDataSource
+import com.mujapps.multiplatformtester.articles.data.services.ArticlesService
 
 class ArticlesRepository(private val dataSource: ArticlesDataSource, private val articleService: ArticlesService) {
 

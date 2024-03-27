@@ -1,5 +1,6 @@
-package com.mujapps.multiplatformtester.articles
+package com.mujapps.multiplatformtester.articles.data
 
+import com.mujapps.multiplatformtester.articles.data.ArticleRaw
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

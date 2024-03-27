@@ -1,16 +1,13 @@
-package com.mujapps.multiplatformtester.articles
+package com.mujapps.multiplatformtester.articles.precentation
 
 import com.mujapps.multiplatformtester.BaseViewModel
-import com.mujapps.multiplatformtester.services.ArticlesService
-import com.mujapps.multiplatformtester.usecases.ArticlesUseCase
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
-import io.ktor.serialization.kotlinx.json.json
+import com.mujapps.multiplatformtester.articles.domain.Article
+import com.mujapps.multiplatformtester.articles.precentation.ArticleState
+import com.mujapps.multiplatformtester.articles.domain.usecases.ArticlesUseCase
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.serialization.json.Json
 
 class ArticleViewModel(private val articlesUseCase: ArticlesUseCase) : BaseViewModel() {
     // State flows are obligated to have a initial value

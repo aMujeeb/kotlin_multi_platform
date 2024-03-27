@@ -1,7 +1,7 @@
-package com.mujapps.multiplatformtester.services
+package com.mujapps.multiplatformtester.articles.data.services
 
-import com.mujapps.multiplatformtester.articles.ArticleRaw
-import com.mujapps.multiplatformtester.articles.ArticlesResponse
+import com.mujapps.multiplatformtester.articles.data.ArticleRaw
+import com.mujapps.multiplatformtester.articles.data.ArticlesResponse
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
